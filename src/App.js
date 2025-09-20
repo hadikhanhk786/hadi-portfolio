@@ -4,10 +4,10 @@ import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
 
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-300 text-slate-900 p-6">
-      <div className="max-w-4xl mx-auto space-y-8">
+    <div className="min-h-screen p-6 flex justify-center">
+      <div className="w-[90%] max-w-5xl space-y-6">
         <Header />
         <Summary />
         <Skills />
@@ -17,3 +17,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

@@ -1,12 +1,43 @@
+import { FaLinkedin, FaGithub, FaPhone, FaEnvelope } from "react-icons/fa";
+import profilePic from "../assets/profile.jpg";
+
 export default function Header() {
   return (
-    <header className="card-3d bg-white rounded-2xl p-6 shadow-md text-center">
-      <h1 className="text-3xl font-bold">HADI KHAN</h1>
-      <p className="mt-2">Bareilly, UP 243005</p>
-      <p className="mt-1">📞 +91 9528091316 | 📧 khanhadi6@gmail.com</p>
-      <div className="flex justify-center gap-6 mt-3">
-        <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">LinkedIn</a>
-        <a href="https://github.com" target="_blank" rel="noreferrer" className="text-gray-800 hover:underline">GitHub</a>
+    <header className="card-3d bg-gray-800 rounded-3xl p-8 shadow-xl text-center space-y-4">
+      {/* Photo */}
+      <div className="flex justify-center">
+        <img
+          src={profilePic}
+          alt="Hadi Khan"
+          className="w-32 h-32 rounded-full border-4 border-blue-500 shadow-lg object-cover"
+        />
+      </div>
+
+      <h1 className="text-4xl font-bold text-white">HADI KHAN</h1>
+      <p className="text-gray-300">Bareilly, UP 243005</p>
+
+      <div className="flex justify-center gap-4 mt-4 flex-wrap">
+        <a
+          href="tel:+919528091316"
+          className="flex items-center gap-2 px-5 py-2 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition"
+        >
+          <FaPhone /> Call
+        </a>
+        <a
+          href="mailto:khanhadi6@gmail.com"
+          className="flex items-center gap-2 px-5 py-2 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition"
+        >
+          <FaEnvelope /> Email
+        </a>
+      </div>
+
+      <div className="flex justify-center gap-6 mt-4 text-white text-2xl">
+        <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+          <FaLinkedin className="hover:text-blue-400 transition" />
+        </a>
+        <a href="https://github.com" target="_blank" rel="noreferrer">
+          <FaGithub className="hover:text-gray-300 transition" />
+        </a>
       </div>
     </header>
   );

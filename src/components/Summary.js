@@ -1,8 +1,8 @@
 export default function Summary() {
   return (
-    <section className="card-3d bg-white rounded-2xl p-6 shadow-md">
-      <h2 className="text-xl font-semibold mb-2">Summary</h2>
-      <p>
+    <section className="card-3d bg-gray-800 rounded-2xl p-6 shadow-xl">
+      <h2 className="text-xl font-semibold mb-2 text-white">Summary</h2>
+      <p className="text-gray-200">
         Software Development Engineer (SDE-2) with 5+ years’ experience building and
         optimizing scalable backend systems with Node.js and PostgreSQL. Expert in
         boosting API efficiency, architecting high-availability microservices, and tuning
