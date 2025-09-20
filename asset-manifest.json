@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hadi-portfolio/static/css/main.0dabdc4c.css",
+    "main.js": "/hadi-portfolio/static/js/main.5009fe09.js",
+    "static/js/453.bde464a9.chunk.js": "/hadi-portfolio/static/js/453.bde464a9.chunk.js",
+    "index.html": "/hadi-portfolio/index.html",
+    "main.0dabdc4c.css.map": "/hadi-portfolio/static/css/main.0dabdc4c.css.map",
+    "main.5009fe09.js.map": "/hadi-portfolio/static/js/main.5009fe09.js.map",
+    "453.bde464a9.chunk.js.map": "/hadi-portfolio/static/js/453.bde464a9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0dabdc4c.css",
+    "static/js/main.5009fe09.js"
+  ]
+}
