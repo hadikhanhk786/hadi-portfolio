@@ -3,8 +3,7 @@ import profilePic from "../assets/profile.jpg";
 
 export default function Header() {
   return (
-    <header className="card-3d bg-gray-800 rounded-3xl p-8 shadow-xl text-center space-y-4">
-      {/* Photo */}
+    <header className="card-3d rounded-3xl p-8 shadow-xl text-center space-y-4">
       <div className="flex justify-center">
         <img
           src={profilePic}
@@ -13,8 +12,10 @@ export default function Header() {
         />
       </div>
 
-      <h1 className="text-4xl font-bold text-white">HADI KHAN</h1>
-      <p className="text-gray-300">Bareilly, UP 243005</p>
+      <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+        HADI KHAN
+      </h1>
+      <p className="text-gray-700 dark:text-gray-300">Bareilly, UP 243005</p>
 
       <div className="flex justify-center gap-4 mt-4 flex-wrap">
         <a
@@ -31,12 +32,22 @@ export default function Header() {
         </a>
       </div>
 
-      <div className="flex justify-center gap-6 mt-4 text-white text-2xl">
-        <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-          <FaLinkedin className="hover:text-blue-400 transition" />
+      <div className="flex justify-center gap-6 mt-4 text-gray-800 dark:text-white text-2xl">
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          rel="noreferrer"
+          className="hover:text-blue-500 transition"
+        >
+          <FaLinkedin />
         </a>
-        <a href="https://github.com" target="_blank" rel="noreferrer">
-          <FaGithub className="hover:text-gray-300 transition" />
+        <a
+          href="https://github.com"
+          target="_blank"
+          rel="noreferrer"
+          className="hover:text-gray-600 dark:hover:text-gray-300 transition"
+        >
+          <FaGithub />
         </a>
       </div>
     </header>

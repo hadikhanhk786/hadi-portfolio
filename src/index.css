@@ -2,18 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Night gradient background */
+/* Light mode background */
 body {
-  @apply bg-gradient-to-br from-black via-gray-900 to-gray-800 font-sans min-h-screen text-white;
+  @apply bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 text-gray-900;
 }
 
+/* Dark mode background */
+.dark body {
+  @apply bg-gradient-to-br from-gray-900 via-gray-950 to-black text-white;
+}
+
+/* Card styles */
 .card-3d {
   transform-style: preserve-3d;
-  transition: transform 0.5s, box-shadow 0.5s;
+  transition: transform 0.5s, box-shadow 0.5s, background-color 0.5s;
   cursor: pointer;
-  color: white; /* ensure text inside cards is white */
 }
+
 .card-3d:hover {
   transform: rotateY(3deg) rotateX(2deg) scale(1.02);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
 }
+
+/* Card colors in dark/light mode */
+.card-3d {
+  @apply bg-white text-gray-900; /* light background, dark text */
+}
+
+.dark .card-3d {
+  @apply bg-gray-800 text-gray-100; /* dark background, light text */
+}
+
