@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3D card styles */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(5deg) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
