@@ -33,9 +33,9 @@ export default function Experience() {
           <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
             {exp.period}
           </p>
-          <ul className="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-1">
+          <ul className="list-disc list-outside pl-6 text-gray-700 dark:text-gray-300 space-y-2">
             {exp.details.map((detail, i) => (
-              <li key={i}>{detail}</li>
+              <li key={i} className="leading-relaxed">{detail}</li>
             ))}
           </ul>
         </div>

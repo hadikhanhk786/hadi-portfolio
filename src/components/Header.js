@@ -34,7 +34,7 @@ export default function Header() {
 
       <div className="flex justify-center gap-6 mt-4 text-gray-800 dark:text-white text-2xl">
         <a
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/hadi-khan-55b575147/"
           target="_blank"
           rel="noreferrer"
           className="hover:text-blue-500 transition"
@@ -42,7 +42,7 @@ export default function Header() {
           <FaLinkedin />
         </a>
         <a
-          href="https://github.com"
+          href="https://github.com/hadikhanhk786"
           target="_blank"
           rel="noreferrer"
           className="hover:text-gray-600 dark:hover:text-gray-300 transition"

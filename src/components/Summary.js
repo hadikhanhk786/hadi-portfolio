@@ -5,12 +5,13 @@ export default function Summary() {
         Summary
       </h2>
       <p className="text-gray-700 dark:text-gray-200">
-        Software Development Engineer (SDE-2) with 5+ years’ experience building
-        and optimizing scalable backend systems with Node.js and PostgreSQL.
-        Expert in boosting API efficiency, architecting high-availability
-        microservices, and tuning databases. Proven leader in cross-functional
-        collaboration, code quality, and delivering robust, high-performance
-        technical solutions.
+        Full-Stack Software Development Engineer (SDE-2) with 5+ years’
+        experience building and optimizing scalable web applications using
+        Node.js, PostgreSQL, and React. Expert in boosting API efficiency,
+        architecting high-availability microservices, and tuning databases,
+        while also designing responsive and interactive front-end interfaces
+        with React. Proven leader in cross-functional collaboration, code
+        quality, and delivering robust, high-performance full-stack solutions.
       </p>
     </section>
   );
