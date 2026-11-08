@@ -1,38 +1,36 @@
 import React from 'react';
+import { MotionConfig } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
-import { HelmetProvider } from 'react-helmet-async';
-import SEO from './components/SEO';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Impact from './components/Impact';
 import About from './components/About';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
+import CaseStudies from './components/CaseStudies';
 import Experience from './components/Experience';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <HelmetProvider>
-      <ThemeProvider>
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
-          <SEO
-            title="Hadi Khan | Software Engineer Portfolio"
-            description="Portfolio of Hadi Khan, SDE-2 specializing in Node.js, PostgreSQL, React, Stripe integrations, and scalable backend systems."
-            keywords="Hadi Khan, Software Engineer, Node.js, PostgreSQL, Stripe, RBAC, React, Portfolio"
-          />
+    <ThemeProvider>
+      <MotionConfig reducedMotion="user">
+        <div className="min-h-screen overflow-x-hidden">
           <Navbar />
           <main>
             <Hero />
+            <Impact />
             <About />
-            <Projects />
-            <Skills />
+            <CaseStudies />
             <Experience />
+            <Skills />
+            <Projects />
             <Contact />
           </main>
           <Footer />
         </div>
-      </ThemeProvider>
-    </HelmetProvider>
+      </MotionConfig>
+    </ThemeProvider>
   );
 }

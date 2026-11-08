@@ -1,93 +1,94 @@
 import React, { useEffect, useState } from 'react';
+import { FiArrowUpRight, FiGitBranch, FiGithub, FiStar } from 'react-icons/fi';
+import Section, { Reveal } from './Section';
+import { profile } from '../data/profile';
+
+const formatName = (name) =>
+  name
+    .split(/[-_]/)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
 
 export default function Projects() {
-  const [repos, setRepos] = useState([]);
-
-  const fetchReadme = async (owner, repo) => {
-    try {
-      const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`);
-      const data = await response.json();
-      const content = atob(data.content); // decode base64
-      // Get first paragraph or first 150 characters
-      const description = content.split('\n\n')[0].slice(0, 150) + '...';
-      return description;
-    } catch (err) {
-      console.error(`Error fetching README for ${repo}:`, err);
-      return null;
-    }
-  };
+  const [repos, setRepos] = useState(null);
 
   useEffect(() => {
-    fetch('https://api.github.com/users/hadikhanhk786/repos')
-      .then(res => res.json())
-      .then(async (data) => {
-        const filtered = data
-          .filter(repo => !repo.fork)
-          .sort((a,b) => new Date(b.created_at) - new Date(a.created_at))
-          .slice(0, 2);
-
-        // Fetch README for each repo
-        const reposWithReadme = await Promise.all(
-          filtered.map(async (repo) => {
-            const readmeContent = await fetchReadme('hadikhanhk786', repo.name);
-            return {
-              ...repo,
-              readmeDescription: readmeContent
-            };
-          })
-        );
-
-        setRepos(reposWithReadme);
-      })
-      .catch(err => console.error("GitHub fetch error", err));
+    const controller = new AbortController();
+    fetch(`https://api.github.com/users/${profile.githubUser}/repos?sort=updated&per_page=30`, {
+      signal: controller.signal,
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .then((data) =>
+        setRepos(
+          data
+            .filter((r) => !r.fork && !r.archived)
+            .sort((a, b) => b.stargazers_count - a.stargazers_count || new Date(b.pushed_at) - new Date(a.pushed_at))
+            .slice(0, 6)
+        )
+      )
+      .catch((err) => {
+        if (err?.name !== 'AbortError') setRepos([]);
+      });
+    return () => controller.abort();
   }, []);
 
-  const formatRepoName = (name) => {
-    return name
-      .split(/[-_]/)
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-      .join(' ');
-  };
-
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">My GitHub Projects</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {repos.map((repo, i) => (
-            <a 
-              key={i}
-              href={repo.html_url} 
-              target="_blank" 
+    <Section
+      id="projects"
+      index="05"
+      eyebrow="Open source"
+      title="On GitHub"
+      intro="Side projects and experiments, pulled live from my GitHub."
+    >
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {repos === null &&
+          Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="card h-40 animate-pulse bg-zinc-100 dark:bg-ink-900" />
+          ))}
+
+        {repos?.map((repo, i) => (
+          <Reveal key={repo.id} delay={i * 0.05} className="h-full">
+            <a
+              href={repo.html_url}
+              target="_blank"
               rel="noopener noreferrer"
-              className="block bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:scale-[1.02] transition border border-gray-200 dark:border-gray-700"
+              className="card group flex h-full flex-col p-6 transition hover:-translate-y-0.5 hover:border-emerald-500/50"
             >
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
-                  {formatRepoName(repo.name)}
-                </h3>
-                <p className="mt-2 text-gray-600 dark:text-gray-300">
-                  {repo.readmeDescription || repo.description || "No description provided."}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm">
-                    ⭐ {repo.stargazers_count}
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="font-semibold">{formatName(repo.name)}</h3>
+                <FiArrowUpRight className="shrink-0 text-zinc-400 transition group-hover:text-emerald-500" />
+              </div>
+              <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {repo.description || 'No description yet.'}
+              </p>
+              <div className="mt-auto flex items-center gap-4 pt-5 font-mono text-xs text-zinc-500">
+                {repo.language && (
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                    {repo.language}
                   </span>
-                  <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm">
-                    React
-                  </span>
-                  <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm">
-                    Tailwind css
-                  </span>
-                  <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm">
-                    Node JS
-                  </span>
-                </div>
+                )}
+                <span className="inline-flex items-center gap-1">
+                  <FiStar /> {repo.stargazers_count}
+                </span>
+                <span className="inline-flex items-center gap-1">
+                  <FiGitBranch /> {repo.forks_count}
+                </span>
               </div>
             </a>
-          ))}
-        </div>
+          </Reveal>
+        ))}
       </div>
-    </section>
+
+      {repos?.length === 0 && (
+        <p className="text-sm text-zinc-500">Couldn't load repositories right now.</p>
+      )}
+
+      <div className="mt-8">
+        <a href={profile.github} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+          <FiGithub /> View all on GitHub
+        </a>
+      </div>
+    </Section>
   );
 }

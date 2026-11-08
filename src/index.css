@@ -2,9 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom utilities */
-html, body, #root { height: 100%; }
-.glass {
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(6px);
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-white text-zinc-900 antialiased dark:bg-ink-950 dark:text-zinc-100;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  ::selection {
+    @apply bg-emerald-400/30;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .card {
+    @apply rounded-2xl border border-zinc-200 bg-white dark:border-ink-700 dark:bg-ink-900;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-md border border-zinc-200 bg-zinc-50 px-2 py-0.5 font-mono text-xs text-zinc-600 dark:border-ink-700 dark:bg-ink-800 dark:text-zinc-300;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-lg border border-zinc-300 px-5 py-2.5 text-sm font-semibold text-zinc-800 transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-ink-700 dark:text-zinc-200 dark:hover:border-zinc-600 dark:hover:bg-ink-800;
+  }
+}
+
+.grid-bg {
+  background-image: linear-gradient(to right, rgb(113 113 122 / 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(113 113 122 / 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
 }
