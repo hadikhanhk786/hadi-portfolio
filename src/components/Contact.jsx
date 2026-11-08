@@ -27,7 +27,7 @@ export default function Contact() {
           <div className="card relative overflow-hidden p-8 sm:p-12">
             <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl" />
             <p className="font-mono text-xs uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
-              <span className="text-zinc-400 dark:text-zinc-500">06 /</span> Contact
+              <span className="text-zinc-400 dark:text-zinc-500">07 /</span> Contact
             </p>
             <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
               Have a slow API, a payments flow, or a backend to build?

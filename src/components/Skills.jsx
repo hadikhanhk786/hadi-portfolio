@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiCloud, FiCode, FiCpu, FiDatabase, FiLink, FiServer } from 'react-icons/fi';
+import { FiActivity, FiCheckCircle, FiCloud, FiCode, FiCpu, FiDatabase, FiLink, FiServer } from 'react-icons/fi';
 import Section, { Reveal } from './Section';
 import { skills } from '../data/profile';
 
@@ -9,19 +9,20 @@ const icons = {
   'Cloud & Infra': FiCloud,
   Languages: FiCode,
   Integrations: FiLink,
-  'Testing & AI tools': FiCpu,
+  Testing: FiCheckCircle,
+  'AI & Agents': FiCpu,
+  'Production support': FiActivity,
 };
 
 export default function Skills() {
   return (
     <Section
       id="skills"
-      index="04"
+      index="05"
       eyebrow="Stack"
       title="Tools I use every day"
-      className="bg-zinc-50/60 dark:bg-ink-900/40"
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {skills.map(({ group, items }, i) => {
           const Icon = icons[group] || FiCode;
           return (

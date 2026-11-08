@@ -7,6 +7,7 @@ import Impact from './components/Impact';
 import About from './components/About';
 import CaseStudies from './components/CaseStudies';
 import Experience from './components/Experience';
+import Capabilities from './components/Capabilities';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -24,6 +25,7 @@ export default function App() {
             <About />
             <CaseStudies />
             <Experience />
+            <Capabilities />
             <Skills />
             <Projects />
             <Contact />

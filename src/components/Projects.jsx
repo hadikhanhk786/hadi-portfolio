@@ -43,7 +43,8 @@ export default function Projects() {
   return (
     <Section
       id="projects"
-      index="05"
+      index="06"
+      className="bg-zinc-50/60 dark:bg-ink-900/40"
       eyebrow="Open source"
       title="On GitHub"
       intro="Side projects and experiments, newest first, pulled live from my GitHub. Projects with a live demo open it directly."

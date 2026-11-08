@@ -11,9 +11,9 @@ export const profile = {
   github: 'https://github.com/hadikhanhk786',
   githubUser: 'hadikhanhk786',
   resume: `${process.env.PUBLIC_URL}/Hadi_Khan_Resume.pdf`,
-  stack: ['Node.js', 'Express', 'NestJS', 'PostgreSQL', 'Redis', 'AWS'],
+  stack: ['Node.js', 'Express', 'NestJS', 'PostgreSQL', 'Redis', 'AWS', 'MCP', 'AI agents'],
   tagline:
-    'I build backends that stay fast, correct and boring under load: APIs, payment flows and data pipelines in Node.js, PostgreSQL and AWS.',
+    'I build backends that stay fast, correct and boring under load: APIs, payment flows and data pipelines in Node.js, PostgreSQL and AWS. I also build the AI agents and MCP tooling around them, and I support what I ship in production.',
   summary: [
     "Six years into backend engineering, the problems that still excite me most are the messy ones: a government API timing out at 6.2 seconds with a million records on the other side, a payment webhook that needs to be idempotent or someone gets charged twice, a PostgreSQL table that EXPLAIN ANALYZE says is doing a full sequential scan on 40 million rows.",
     "That's the work I've been doing at HSC and LTIMindtree. Node.js, Express, NestJS, PostgreSQL, Redis, AWS Lambda and SQS are my daily stack. I've used them to cut that 6.2s latency down to 0.5s, wire up a Stripe integration that has run cleanly for four years on a platform doing $75M a year, and pull roughly 40% faster query times out of indexes and partitioning.",
@@ -94,9 +94,11 @@ export const experience = [
     points: [
       'Built an OpenAI API pipeline on Node.js/Express microservices that turns reports which took 45+ minutes to assemble by hand into structured output in under 3 seconds.',
       'Designed the REST API layer in strict TypeScript, with typed request/response schemas, custom error middleware and request-level logging that makes production debugging far less painful.',
-      'Pair-program with GitHub Copilot and Claude for test scaffolding, edge-case generation and refactoring. It cuts delivery time without lowering the quality bar.',
+      'Build AI agent workflows on top of these services: MCP servers in TypeScript expose internal APIs, the database and logs to agents as typed, scoped tools, with read-only defaults and human approval before any write.',
+      'Pair-program with Claude Code and GitHub Copilot for test scaffolding, edge-case generation and refactoring. It cuts delivery time without lowering the quality bar.',
+      'Provide production support for the document pipeline: monitor the services, triage failures from request-level logs, ship fixes and roll back safely when needed.',
     ],
-    tech: ['TypeScript', 'Node.js', 'Express', 'OpenAI API', 'Microservices'],
+    tech: ['TypeScript', 'Node.js', 'Express', 'OpenAI API', 'MCP', 'AI agents', 'Microservices'],
   },
   {
     company: 'HughesSystique Corporation (HSC)',
@@ -108,9 +110,11 @@ export const experience = [
       'Brought PostgreSQL retrieval times down ~40% on 40M+ row tables with date-range partitioning and query plan rewrites.',
       'Owned the Stripe integration for a ~$75M/yr platform: payment intents, webhook verification, idempotency keys and daily reconciliation. Zero payment incidents in four years.',
       'Moved report generation, email notifications and audit logging onto AWS Lambda and SQS, so the API stayed responsive through load spikes and costs went down.',
+      'Provided production support for the compliance and payment platform: triaged incidents, traced root causes through logs, metrics and query plans, shipped hotfixes and rollbacks, and wrote up post-incident fixes so issues didn’t repeat.',
+      'Brought AI agents into the team’s workflow: Claude and Copilot for test scaffolding and refactoring, and MCP connections to the dev database and API docs so agents worked from the real schema instead of guesses.',
       'Helped establish code reviews, TDD and GitHub Actions CI/CD, which cut the production bug rate 15%. Mentored three junior engineers, and the sprint defect rate fell ~20% over six months.',
     ],
-    tech: ['Node.js', 'Express', 'PostgreSQL', 'Redis', 'AWS Lambda', 'SQS', 'Stripe'],
+    tech: ['Node.js', 'Express', 'PostgreSQL', 'Redis', 'AWS Lambda', 'SQS', 'Stripe', 'MCP', 'Production support'],
   },
   {
     company: 'Svayam Infoware Pvt. Ltd.',
@@ -148,8 +152,32 @@ export const skills = [
     items: ['Stripe (intents, webhooks, idempotency, reconciliation)', 'OpenAI API', 'JWT / OAuth2'],
   },
   {
-    group: 'Testing & AI tools',
-    items: ['Jest', 'Supertest', 'TDD', 'Integration testing', 'GitHub Copilot', 'Claude', 'ChatGPT'],
+    group: 'Testing',
+    items: ['Jest', 'Supertest', 'TDD', 'Integration testing', 'Contract testing'],
+  },
+  {
+    group: 'AI & Agents',
+    items: [
+      'MCP (Model Context Protocol)',
+      'MCP servers in Node.js / TypeScript',
+      'AI agents & tool calling',
+      'LLM pipelines (OpenAI API)',
+      'Claude Code',
+      'GitHub Copilot',
+      'Prompt design',
+    ],
+  },
+  {
+    group: 'Production support',
+    items: [
+      'Incident triage',
+      'Root-cause analysis',
+      'Monitoring & alerting',
+      'Structured logging',
+      'Hotfixes & rollbacks',
+      'Post-incident reviews',
+      'Reconciliation jobs',
+    ],
   },
 ];
 
@@ -158,3 +186,39 @@ export const education = {
   school: 'Shri Ramswaroop Memorial College of Engineering, Lucknow',
   year: '2020',
 };
+
+export const capabilities = [
+  {
+    key: 'agents',
+    title: 'AI agents & MCP',
+    lead: 'I build and use AI agents as part of everyday engineering, and connect them to real systems with the Model Context Protocol (MCP).',
+    points: [
+      'Write MCP servers in Node.js/TypeScript that give agents typed, scoped access to tools: databases, internal APIs, logs and docs',
+      'Wire LLM tool calling into backend services, with schemas validated on the way in and on the way out',
+      'Guardrails first: read-only by default, input validation, and a human approval step before anything writes',
+      'Run coding agents (Claude Code, Copilot) test-first, so the agent fills the boilerplate and the tests define what "done" means',
+    ],
+  },
+  {
+    key: 'support',
+    title: 'Production support',
+    lead: "I own services after they ship. Most of what I know about performance came from being the one who gets paged.",
+    points: [
+      'Incident triage on live payment and government compliance platforms',
+      'Root-cause analysis from request-level logs, metrics and EXPLAIN ANALYZE plans',
+      'Hotfixes, safe rollbacks and short post-incident write-ups so the same bug doesn’t come back',
+      'Monitoring, alerting and daily reconciliation jobs that catch problems before customers do',
+    ],
+  },
+  {
+    key: 'practice',
+    title: 'Engineering practice',
+    lead: 'Habits that keep a team shipping without breaking things.',
+    points: [
+      'Code reviews, TDD and GitHub Actions CI/CD as team standards (production bug rate down 15%)',
+      'Strict TypeScript across request and response schemas, with custom error middleware',
+      'Mentored three junior engineers through weekly 1:1s and structured PR feedback',
+      'Async by default: anything that doesn’t need to block a response goes to a queue',
+    ],
+  },
+];
