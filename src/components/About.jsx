@@ -22,7 +22,7 @@ export default function About() {
 
         <Reveal delay={0.1}>
           <div className="card overflow-hidden">
-            <img src={profileImage} alt="Hadi Khan" className="aspect-square w-full object-cover" />
+            <img src={profileImage} alt="Hadi Khan" className="aspect-[4/5] w-full object-cover object-top" />
             <dl className="divide-y divide-zinc-200 dark:divide-ink-700">
               {facts.map(([k, v]) => (
                 <div key={k} className="flex flex-col gap-0.5 px-5 py-3">
