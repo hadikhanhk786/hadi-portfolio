@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/hadi-portfolio/static/css/main.c429c3ad.css",
-    "main.js": "/hadi-portfolio/static/js/main.b2724619.js",
-    "static/media/profile.jpg": "/hadi-portfolio/static/media/profile.1766d24beca838dfc78a.jpg",
+    "main.css": "/hadi-portfolio/static/css/main.cc085039.css",
+    "main.js": "/hadi-portfolio/static/js/main.7d1dcdde.js",
+    "static/media/profile.jpg": "/hadi-portfolio/static/media/profile.433ddd1852b9a6f198a2.jpg",
     "index.html": "/hadi-portfolio/index.html",
-    "main.c429c3ad.css.map": "/hadi-portfolio/static/css/main.c429c3ad.css.map",
-    "main.b2724619.js.map": "/hadi-portfolio/static/js/main.b2724619.js.map"
+    "main.cc085039.css.map": "/hadi-portfolio/static/css/main.cc085039.css.map",
+    "main.7d1dcdde.js.map": "/hadi-portfolio/static/js/main.7d1dcdde.js.map"
   },
   "entrypoints": [
-    "static/css/main.c429c3ad.css",
-    "static/js/main.b2724619.js"
+    "static/css/main.cc085039.css",
+    "static/js/main.7d1dcdde.js"
   ]
 }
