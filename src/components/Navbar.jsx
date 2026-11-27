@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FiDownload, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
 import { profile } from '../data/profile';
+import { trackEvent } from '../lib/analytics';
 
 const links = [
-  { href: '#about', label: 'About' },
-  { href: '#work', label: 'Work' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#how-i-work', label: 'How I work' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact', label: 'Contact' },
+  { to: '/about', label: 'About' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/skills', label: 'Skills' },
+  { to: '/notes', label: 'Notes' },
+  { to: '/resume', label: 'Resume' },
+  { to: '/contact', label: 'Contact' },
 ];
 
 function ThemeToggle() {
@@ -29,7 +30,7 @@ function ThemeToggle() {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState('');
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -38,19 +39,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => e.isIntersecting && setActive(`#${e.target.id}`));
-      },
-      { rootMargin: '-45% 0px -50% 0px' }
-    );
-    links.forEach(({ href }) => {
-      const el = document.querySelector(href);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
+  useEffect(() => setOpen(false), [pathname]); // close the mobile menu after navigating
 
   return (
     <header
@@ -61,27 +50,29 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-x flex h-16 items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 font-mono text-sm font-semibold">
+        <Link to="/" className="flex items-center gap-2 font-mono text-sm font-semibold" aria-label="Hadi Khan, home">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-emerald-500 text-ink-950">hk</span>
           <span className="hidden sm:inline">hadi.khan</span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-1 md:flex">
-          {links.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className={`rounded-lg px-3 py-2 text-sm transition ${
-                active === href
-                  ? 'text-zinc-900 dark:text-white'
-                  : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
-              }`}
+          {links.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                `rounded-lg px-3 py-2 text-sm transition ${
+                  isActive
+                    ? 'bg-zinc-100 font-medium text-zinc-900 dark:bg-ink-800 dark:text-white'
+                    : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+                }`
+              }
             >
               {label}
-            </a>
+            </NavLink>
           ))}
           <ThemeToggle />
-          <a href={profile.resume} target="_blank" rel="noopener noreferrer" className="btn-primary ml-2 !px-4 !py-2">
+          <a href={profile.resume} download onClick={() => trackEvent('resume-download')} className="btn-primary ml-2 !px-4 !py-2">
             <FiDownload /> Resume
           </a>
         </div>
@@ -102,17 +93,20 @@ export default function Navbar() {
       {open && (
         <div className="container-x pb-4 md:hidden">
           <div className="flex flex-col">
-            {links.map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                onClick={() => setOpen(false)}
-                className="border-b border-zinc-100 py-3 text-sm text-zinc-700 dark:border-ink-800 dark:text-zinc-300"
+            {links.map(({ to, label }) => (
+              <NavLink
+                key={to}
+                to={to}
+                className={({ isActive }) =>
+                  `border-b border-zinc-100 py-3 text-sm dark:border-ink-800 ${
+                    isActive ? 'font-semibold text-emerald-600 dark:text-emerald-400' : 'text-zinc-700 dark:text-zinc-300'
+                  }`
+                }
               >
                 {label}
-              </a>
+              </NavLink>
             ))}
-            <a href={profile.resume} target="_blank" rel="noopener noreferrer" className="btn-primary mt-4 justify-center">
+            <a href={profile.resume} download onClick={() => trackEvent('resume-download')} className="btn-primary mt-4 justify-center">
               <FiDownload /> Download resume
             </a>
           </div>
