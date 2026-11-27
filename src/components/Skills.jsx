@@ -4,6 +4,7 @@ import Section, { Reveal } from './Section';
 import { skills } from '../data/profile';
 
 const icons = {
+  Frontend: FiCode,
   Backend: FiServer,
   Databases: FiDatabase,
   'Cloud & Infra': FiCloud,

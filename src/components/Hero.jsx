@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiMapPin } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail, FiMapPin } from 'react-icons/fi';
 import { profile } from '../data/profile';
+import { trackEvent } from '../lib/analytics';
 
 const fadeUp = (delay) => ({
   initial: { opacity: 0, y: 18 },
@@ -105,11 +107,11 @@ export default function Hero() {
           </motion.div>
 
           <motion.div {...fadeUp(0.32)} className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#work" className="btn-primary">
-              See my work <FiArrowRight />
-            </a>
-            <a href="#contact" className="btn-ghost">
-              Get in touch
+            <Link to="/projects" className="btn-primary">
+              View projects <FiArrowRight />
+            </Link>
+            <a href={profile.resume} download onClick={() => trackEvent('resume-download')} className="btn-ghost">
+              <FiDownload /> Download resume
             </a>
           </motion.div>
 

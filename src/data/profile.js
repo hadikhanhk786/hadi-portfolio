@@ -132,6 +132,11 @@ export const experience = [
 
 export const skills = [
   {
+    // From my project repos (Citewise, E-Commerce, Live Classroom)
+    group: 'Frontend',
+    items: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Redux Toolkit', 'React Query', 'Socket.IO client'],
+  },
+  {
     group: 'Backend',
     items: ['Node.js', 'Express.js', 'NestJS', 'REST APIs', 'Microservices', 'Event-driven architecture', 'WebSockets / Socket.IO'],
   },
@@ -180,6 +185,12 @@ export const skills = [
     ],
   },
 ];
+
+// TODO: certifications and achievements, e.g. { title: '...', issuer: '...', year: '...', url: '...' }
+export const certifications = [];
+
+export const lookingFor =
+  "I'm open to senior backend roles and freelance work: APIs, payments, data pipelines, and AI agents/MCP tooling on Node.js, PostgreSQL and AWS.";
 
 export const education = {
   degree: 'B.Tech, Information Technology',
